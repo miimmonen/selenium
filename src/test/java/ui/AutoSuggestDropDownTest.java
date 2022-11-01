@@ -1,5 +1,6 @@
 package ui;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class AutoSuggestDropDownTest {
 
 	//The browser to be used, can be e.g. sought from external configuration.
-	public static String browser = "chrome";
+	public static String browser = "edge";
 	//we are referencing the WebDriver -interface
 	public static WebDriver driver;
 	public static void main(String[] args){
@@ -47,6 +48,8 @@ public class AutoSuggestDropDownTest {
 		driver.findElement(By.xpath("//*[@id=\"location-field-destination\"]")).sendKeys("Helsinki", Keys.RETURN);
 		
 		driver.findElement(By.xpath("//button[text()='Hae']")).click();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.close();
 	}
 }
