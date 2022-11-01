@@ -35,7 +35,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class HandlingWindows {
 
 	// The browser to be used, can be e.g. sought from external configuration.
-	public static final String BROWSER = "edge";
+	public static final String BROWSER = "firefox";
 	// we are referencing the WebDriver -interface
 	public static WebDriver driver;
 	public static final String URL = "https://support.google.com/youtube/answer/6180214?ref_topic=9257109";
