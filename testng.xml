@@ -3,8 +3,6 @@
 <suite name="UI tests">
   <test name="Functional testing">
     <classes>
-      <class name="uiNG.VerifyTitleAndText"/>
-      <class name="uiNG.VerifyTitle"/>
       <class name="uiNG.GroupsDemo"/>
       <class name="uiNG.LoginTest"/>
     </classes>
