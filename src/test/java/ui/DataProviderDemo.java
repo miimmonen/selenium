@@ -84,11 +84,11 @@ public class DataProviderDemo {
 		//we define a multidimensional object with 3 rows and 2 columns
 		Object[][] dataset = new Object[3][2];
 		
-		dataset[0][0] = "user1";
-		dataset[0][1] = "pass1";
+		dataset[0][0] = "performance_glitch_user";
+		dataset[0][1] = "secret_sauce";
 		
-		dataset[1][0] = "user2";
-		dataset[1][1] = "pass2";
+		dataset[1][0] = "problem_user";
+		dataset[1][1] = "secret_sauce";
 		
 		dataset[2][0] = "standard_user";
 		dataset[2][1] = "secret_sauce";
@@ -103,13 +103,11 @@ public class DataProviderDemo {
 	@DataProvider
 	public Object[][] dataSet2(){
 		return new Object[][] {
-			{"us","pas"},
-			{"usser","passer"},
+			{"wrong_username","wrong_password"},
 			{"standard_user","secret_sauce"},
-			{"us","pas124"},
-			{"us1426","pas"},
-			{"us","pas1423"},
-			{"us1425","pas1"}
+			{"locked_out_user","secret_sauce"},
+			{"problem_user","secret_sauce"},
+			{"performance_glitch_user","secret_sauce"},
 			};
 	}
 }
