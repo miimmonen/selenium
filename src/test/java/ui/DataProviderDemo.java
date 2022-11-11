@@ -38,9 +38,8 @@ public class DataProviderDemo {
 	}
 	
 	@Test(dataProvider="dataSet")
-	public void test(String usern, String passw) {
+	public void loginTest1(String usern, String passw) {
 		SoftAssert sassert = new SoftAssert();
-		System.out.println(usern+" "+passw);
 		driver.get("https://www.saucedemo.com");
 		driver.findElement(By.id("user-name")).sendKeys(usern);
 		driver.findElement(By.id("password")).sendKeys(passw);
@@ -48,8 +47,8 @@ public class DataProviderDemo {
 		driver.findElement(By.id("login-button")).sendKeys(Keys.RETURN);
 
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3), 
-				Duration.ofMillis(1000));	
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(200),
+				Duration.ofMillis(50));
 				wait.until(ExpectedConditions.urlMatches("https://www.saucedemo.com/inventory.html"));
 		String text = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
 		String expectedText = "PRODUCTS";
@@ -57,6 +56,29 @@ public class DataProviderDemo {
 		sassert.assertAll();
 	}
 	
+	@Test(dataProvider="dataSet2")
+	public void loginTest2(String usern, String passw) {
+		SoftAssert sassert = new SoftAssert();
+		driver.get("https://www.saucedemo.com");
+		driver.findElement(By.id("user-name")).sendKeys(usern);
+		driver.findElement(By.id("password")).sendKeys(passw);
+		//Press enter on the login-button
+		driver.findElement(By.id("login-button")).sendKeys(Keys.RETURN);
+
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(200),
+				Duration.ofMillis(50));
+				wait.until(ExpectedConditions.urlMatches("https://www.saucedemo.com/inventory.html"));
+		String text = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
+		String expectedText = "PRODUCTS";
+		sassert.assertEquals(text, expectedText, "Text verification failed");
+		sassert.assertAll();
+	}
+
+	/**
+	 * Defining a dataset
+	 * @return 2-dimensional object of data
+	 */
 	@DataProvider
 	public Object[][] dataSet() {
 		//we define a multidimensional object with 3 rows and 2 columns
@@ -74,4 +96,20 @@ public class DataProviderDemo {
 		return dataset;
 	}
 	
+	/**
+	 * Defining a dataset in another way
+	 * @return 2-dimensional object of data
+	 */
+	@DataProvider
+	public Object[][] dataSet2(){
+		return new Object[][] {
+			{"us","pas"},
+			{"usser","passer"},
+			{"standard_user","secret_sauce"},
+			{"us","pas124"},
+			{"us1426","pas"},
+			{"us","pas1423"},
+			{"us1425","pas1"}
+			};
+	}
 }
